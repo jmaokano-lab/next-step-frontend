@@ -5,11 +5,18 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useRef, useState } from "react";
 
-const megaMenuData = [
+interface MenuItem {
+  name: string;
+  href: string; // Make sure href is always a string
+  subMenu?: { name: string; href: string }[];
+}
+
+const megaMenuData: MenuItem[] = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   {
     name: "Services",
+    href: "",
     subMenu: [
       { name: "Consulting", href: "/services/consulting" },
       { name: "Training", href: "/services/training" },
@@ -19,7 +26,7 @@ const megaMenuData = [
   { name: "Country", href: "/country" },
   { name: "University", href: "/university" },
   { name: "Course", href: "/course" },
-  { name: "Scholarship", href: "/scholarship" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -64,7 +71,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full bg-white shadow">
+    <nav className="w-full bg-gradient-to-r from-[#fbfbfb] to-[#5e98c4] shadow text-white ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 ">
           {/* Left: Logo */}
@@ -75,16 +82,17 @@ export default function Navbar() {
           </div>
 
           {/* Middle: Menu */}
-          <div className="flex space-x-2">
+          <div className="flex justify-center items-center ">
             {megaMenuData.map((item) => (
               <div key={item.name} className="relative">
-                <button
+                <Link
+                  href={item.href || "/"} // Use "/" as fallback if href is undefined or empty
                   onMouseEnter={() => item.subMenu && setOpenMenu(item.name)}
                   onMouseLeave={() => setOpenMenu(null)}
-                  className="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
+                  className="px-2 py-2 text-gray-900 uppercase hover:text-[#42993F] font-medium cursor-pointer"
                 >
                   {item.name}
-                </button>
+                </Link>
 
                 {/* Submenu */}
                 {item.subMenu && openMenu === item.name && (
@@ -106,38 +114,38 @@ export default function Navbar() {
                 )}
               </div>
             ))}
+            <div ref={wrapperRef} className="relative hidden lg:block">
+              {/* Search Icon */}
+              <button
+                type="button"
+                aria-label="Search"
+                onClick={handleToggle}
+                className="rounded p-2 text-[#0f3036] hover:text-[#119d3e]"
+              >
+                <SearchIcon className="h-5 w-5" />
+              </button>
+
+              {/* Dropdown Search Field */}
+              {open && (
+                <form
+                  onSubmit={handleSubmit}
+                  className="absolute right-0 mt-2 flex w-72 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-3 text-sm shadow-lg"
+                >
+                  <SearchIcon className="h-4 w-4 text-slate-400" />
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search..."
+                    className="w-full border-none bg-transparent text-[#0f3036] placeholder:text-slate-400 focus:outline-none"
+                  />
+                </form>
+              )}
+            </div>
           </div>
 
           {/* Right: Search Bar */}
-          <div ref={wrapperRef} className="relative hidden lg:block">
-            {/* Search Icon */}
-            <button
-              type="button"
-              aria-label="Search"
-              onClick={handleToggle}
-              className="rounded p-2 text-[#0f3036] hover:text-[#119d3e]"
-            >
-              <SearchIcon className="h-5 w-5" />
-            </button>
-
-            {/* Dropdown Search Field */}
-            {open && (
-              <form
-                onSubmit={handleSubmit}
-                className="absolute right-0 mt-2 flex w-72 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-3 text-sm shadow-lg"
-              >
-                <SearchIcon className="h-4 w-4 text-slate-400" />
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search..."
-                  className="w-full border-none bg-transparent text-[#0f3036] placeholder:text-slate-400 focus:outline-none"
-                />
-              </form>
-            )}
-          </div>
         </div>
       </div>
     </nav>

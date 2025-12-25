@@ -12,7 +12,10 @@ export const CountrySection = () => {
   ];
 
   return (
-    <div className="bg-gray-50 py-16">
+    <div
+      className="bg-gray-50 py-12 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/pattern-1.png')" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {categories.map((category, index) => (

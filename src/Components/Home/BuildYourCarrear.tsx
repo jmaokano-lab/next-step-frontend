@@ -30,11 +30,11 @@ export const BuildCareerSection = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Video Section */}
         <div className="relative">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl ">
             <iframe
               className="w-full aspect-video rounded-lg"
               src="https://www.youtube.com/embed/GfTJXLIOcDU"
@@ -56,10 +56,10 @@ export const BuildCareerSection = () => {
 
         {/* Content Section */}
         <div>
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl font-bold text-gray-900 mb-3">
             Build your Career Life.
           </h2>
-          <p className="text-gray-600 mb-8 leading-relaxed">
+          <p className="text-gray-600 mb-4 leading-relaxed">
             Far far away, behind the word mountains, far from the countries
             Vokalia and Consonantia, there live the blind texts.
           </p>

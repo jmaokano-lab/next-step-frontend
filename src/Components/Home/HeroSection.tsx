@@ -49,7 +49,7 @@ export const HeroSection = () => {
   }, [currentSlide]);
 
   return (
-    <div className="relative w-full overflow-hidden h-[500px]">
+    <div className="relative w-full overflow-hidden h-[390px]">
       {/* Slides Container */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
@@ -60,12 +60,12 @@ export const HeroSection = () => {
             key={index}
             className="min-w-full relative bg-cover bg-center py-10"
             style={{
-              backgroundImage: `linear-gradient(135deg, rgba(99, 102, 241, 0.7), rgba(168, 85, 247, 0.7)), url('${slide.backgroundImage}')`,
+              backgroundImage: ` url('${slide.backgroundImage}')`,
             }}
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <p className="text-white text-sm uppercase tracking-wider mb-6">
-                {slide.tagline}
+                {/* {slide.tagline} */}
               </p>
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
                 {slide.title}
@@ -77,7 +77,7 @@ export const HeroSection = () => {
               </button>
 
               {/* Social Icons */}
-              <div className="flex items-center justify-center space-x-6 mt-12">
+              {/* <div className="flex items-center justify-center space-x-6 mt-12">
                 {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
                   <button
                     key={i}
@@ -86,7 +86,7 @@ export const HeroSection = () => {
                     <Icon className="w-5 h-5 text-[#1D8AB1] hover:text-white" />
                   </button>
                 ))}
-              </div>
+              </div> */}
 
               <p className="text-white text-sm mt-4">
                 (512)+ Histudy Students. (68)+ Histudy Instructor. Since 2014

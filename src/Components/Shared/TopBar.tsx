@@ -24,7 +24,7 @@ const TopBar = () => {
           <div className="flex items-center space-x-4">
             <div className="flex justify-between items-center gap-2">
               <PhoneCall className="text-gray-500 size-4"></PhoneCall>{" "}
-              <span className="text-gray-500"> +1 362 592 874</span>
+              <span className="text-gray-500">(+880) 1704 888644</span>
             </div>
             <div className="border border-gray-200 h-5"></div>
             <div className="flex items-center  ">
